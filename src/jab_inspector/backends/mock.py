@@ -1,4 +1,4 @@
-from ..core.backend import AccessibleRole, AccessibleState, AccessibleNode, Bounds
+from ..core.models import AccessibleRole, AccessibleState, AccessibleNode, Bounds
 
 
 class MockBackend:
@@ -51,7 +51,7 @@ class MockBackend:
         return [self.root]
 
     def refresh(self):
-        pass
+        print("Refreshed")
 
     def highlight(self, node: AccessibleNode):
         print("Highlight: ", node)

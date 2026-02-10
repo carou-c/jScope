@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QWidget, QFormLayout, QLabel
 
-from ..core.backend import AccessibleNode
+from ..core.models import AccessibleNode
 
 
 class PropertyPanel(QWidget):
@@ -43,12 +43,27 @@ class PropertyPanel(QWidget):
         )
         self.layout.addRow("Supports AccessibleText:", self.node_supports_acc_text)
 
-    def display_node(self, node: AccessibleNode):
+    def display_node(self, node: AccessibleNode | None):
+        if node is None:
+            self.node_name.setText("")
+            self.node_description.setText("")
+            self.node_role.setText("")
+            self.node_states.setText("")
+            self.node_bounds.setText("")
+            self.node_object_depth.setText("")
+            self.node_index_in_parent.setText("")
+            self.node_children_count.setText("")
+            self.node_supports_acc_component.setText("")
+            self.node_supports_acc_action.setText("")
+            self.node_supports_acc_selection.setText("")
+            self.node_supports_acc_text.setText("")
+            return
+
         self.node_role.setText(node.role)
         self.node_name.setText(node.name or "-")
         self.node_description.setText(node.description or "-")
 
-        self.node_states.setText(", ".join(node.states))
+        self.node_states.setText(",".join(node.states))
 
         bounds_text = f"x={node.bounds.x}; y={node.bounds.y}; width={node.bounds.width}; height={node.bounds.height}"
         self.node_bounds.setText(bounds_text)

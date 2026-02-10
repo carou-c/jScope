@@ -1,16 +1,18 @@
 from PySide6.QtWidgets import QTreeWidget, QTreeWidgetItem
 
-from ..core.backend import AccessibleNode
+from ..core.models import AccessibleNode
 from ..core.controller import Controller
 
 
 class TreeItem(QTreeWidgetItem):
     def __init__(self, node: AccessibleNode):
-        super().__init__([
-            # node.name or "-",
-            node.role
-        ])
-        self.node = node
+        super().__init__(
+            [
+                node.role,
+                node.name or "-",
+            ]
+        )
+        self.node: AccessibleNode = node
 
 
 class TreePanel(QTreeWidget):
@@ -19,7 +21,8 @@ class TreePanel(QTreeWidget):
 
         self.controller = controller
 
-        # self.setHeaderLabels(["Name", "Role"])
+        self.setHeaderLabels(["AccessibleRole", "Name"])
+        self.setColumnWidth(0, 250)
         self.populate()
 
         self.itemClicked.connect(self.on_click)
@@ -28,6 +31,10 @@ class TreePanel(QTreeWidget):
         for root in self.controller.roots():
             item = self.build_item(root)
             self.addTopLevelItem(item)
+
+    def rebuild(self):
+        self.clear()
+        self.populate()
 
     def build_item(self, node: AccessibleNode) -> TreeItem:
         item = TreeItem(node)

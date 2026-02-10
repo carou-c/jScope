@@ -4,6 +4,7 @@ from PySide6.QtCore import Qt
 from ..core.controller import Controller
 from ..ui.tree_panel import TreePanel
 from ..ui.property_panel import PropertyPanel
+from ..ui.toolbar import MainToolBar
 
 
 class InspectorWindow(QMainWindow):
@@ -12,6 +13,9 @@ class InspectorWindow(QMainWindow):
 
         self.setWindowTitle("JAB Inspector")
         self.resize(1200, 800)
+
+        self.toolbar = MainToolBar(controller)
+        self.addToolBar(self.toolbar)
 
         splitter = QSplitter(Qt.Orientation.Horizontal)
 
@@ -27,3 +31,4 @@ class InspectorWindow(QMainWindow):
         self.setCentralWidget(splitter)
 
         controller.node_selected.connect(self.props.display_node)
+        controller.tree_refreshed.connect(self.tree.rebuild)
