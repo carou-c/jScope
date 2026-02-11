@@ -1,3 +1,4 @@
+from time import sleep
 from ..core.models import AccessibleRole, AccessibleState, AccessibleNode, Bounds
 
 
@@ -51,6 +52,7 @@ class MockBackend:
         return [self.root]
 
     def refresh(self):
+        sleep(2)
         print("Refreshed")
 
     def highlight(self, node: AccessibleNode):

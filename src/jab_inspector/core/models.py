@@ -118,8 +118,8 @@ class AccessibleNode:
     bounds: Bounds
     object_depth: int
     index_in_parent: int
-    parent: Self | None
-    children: list[Self]
+    parent: "AccessibleNode | None"
+    children: list["AccessibleNode"]
     supports_acc_component: bool
     supports_acc_action: bool
     supports_acc_selection: bool

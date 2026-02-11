@@ -4,8 +4,8 @@ from ..core.models import AccessibleNode
 
 
 class PropertyPanel(QWidget):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent: QWidget | None):
+        super().__init__(parent=parent)
 
         self.layout = QFormLayout(self)  # type: ignore
 

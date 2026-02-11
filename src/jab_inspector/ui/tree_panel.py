@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QTreeWidget, QTreeWidgetItem
+from PySide6.QtWidgets import QTreeWidget, QTreeWidgetItem, QWidget
 
 from ..core.models import AccessibleNode
 from ..core.controller import Controller
@@ -16,10 +16,10 @@ class TreeItem(QTreeWidgetItem):
 
 
 class TreePanel(QTreeWidget):
-    def __init__(self, controller: Controller):
-        super().__init__()
+    def __init__(self, parent: QWidget | None, controller: Controller):
+        super().__init__(parent=parent)
 
-        self.controller = controller
+        self.controller: Controller = controller
 
         self.setHeaderLabels(["AccessibleRole", "Name"])
         self.setColumnWidth(0, 250)
