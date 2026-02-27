@@ -1,9 +1,0 @@
-from typing import Protocol, Iterable
-
-from .models import AccessibleNode
-
-
-class AccessibilityBackend(Protocol):
-    def get_root_nodes(self) -> Iterable[AccessibleNode]: ...
-    def refresh(self) -> None: ...
-    def highlight(self, node: AccessibleNode) -> None: ...

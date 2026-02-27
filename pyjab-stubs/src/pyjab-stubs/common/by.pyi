@@ -1,0 +1,9 @@
+class By:
+    XPATH: str
+    NAME: str
+    DESCRIPTION: str
+    ROLE: str
+    STATES: str
+    OBJECT_DEPTH: str
+    CHILDREN_COUNT: str
+    INDEX_IN_PARENT: str

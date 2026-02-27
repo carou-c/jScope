@@ -10,4 +10,4 @@ wheels/
 .venv
 
 # Dumps
-jab-inspector.txt
+jscope.txt

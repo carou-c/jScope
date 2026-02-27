@@ -1,0 +1,16 @@
+from _typeshed import Incomplete
+from pyjab.common.exceptions import XpathParserException as XpathParserException
+from pyjab.common.logger import Logger as Logger
+from pyjab.common.role import Role as Role
+from pyjab.common.singleton import singleton as singleton
+
+class XpathParser:
+    logger: Incomplete
+    def __init__(self) -> None: ...
+    @staticmethod
+    def split_nodes(xpath: str) -> list: ...
+    @staticmethod
+    def get_node_role(node: str) -> str: ...
+    @staticmethod
+    def get_node_attributes(node_conditions: str) -> list: ...
+    def get_node_information(self, node: str) -> dict: ...

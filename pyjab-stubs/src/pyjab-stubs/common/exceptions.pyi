@@ -1,0 +1,9 @@
+from _typeshed import Incomplete
+
+class CommonException(Exception):
+    message: Incomplete
+    status: Incomplete
+    def __init__(self, message: str = None, status: str = None) -> None: ...
+
+class JABException(CommonException): ...
+class XpathParserException(CommonException): ...

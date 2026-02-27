@@ -1,0 +1,3 @@
+class TextReader:
+    @staticmethod
+    def get_text_from_raw_bytes(buffer: bytes, chars_len: int, encoding: str | None = None, errors_fallback: str = 'replace') -> str: ...

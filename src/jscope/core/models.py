@@ -1,4 +1,3 @@
-from typing import Self
 from enum import StrEnum, auto
 from dataclasses import dataclass
 
@@ -111,6 +110,7 @@ class Bounds:
 
 @dataclass
 class AccessibleNode:
+    id: int
     name: str | None
     description: str | None
     role: AccessibleRole
@@ -118,9 +118,10 @@ class AccessibleNode:
     bounds: Bounds
     object_depth: int
     index_in_parent: int
-    parent: "AccessibleNode | None"
+    parent_id: int | None
     children: list["AccessibleNode"]
     supports_acc_component: bool
     supports_acc_action: bool
     supports_acc_selection: bool
     supports_acc_text: bool
+    text: str | None = None
