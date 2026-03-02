@@ -33,7 +33,7 @@ class PyjabBackend:
             role=AccessibleRole(element.role.lower().replace(" ", "_")),
             states={
                 AccessibleState(state.lower().replace(" ", "_"))
-                for state in element.states.split(",")
+                for state in element.states
             },
             bounds=Bounds(
                 x=element.bounds["x"],
